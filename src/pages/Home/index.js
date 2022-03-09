@@ -5,7 +5,7 @@ import {
   View,
   Text,
   TextInput,
-  Button,
+  TouchableOpacity,
 } from 'react-native';
 import Clock from '../../components/Clock';
 import Modal from '../../components/Modal';
@@ -74,12 +74,14 @@ export default function Home() {
         <Text style={styles.title}>
           CountDown
         </Text>
-        <Button
-          onPress={() => setToggleModal(true)}
-          title="Inserir Data"
-          color="#03045e"
-        />
       </View>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setToggleModal(true)}
+      >
+        <Text style={styles.text}>Abrir Modal</Text>
+      </TouchableOpacity>
 
       <Clock
         timerDays={timerDays}
@@ -104,5 +106,17 @@ const styles = StyleSheet.create({
   },
   title_input: {
     marginTop: 10,
+  },
+  button: {
+    maxWidth: 100,
+    alignItems: 'center',
+    padding: 8,
+    marginTop: 16,
+    backgroundColor: '#03045e',
+    borderRadius: 4,
+  },
+  text: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
