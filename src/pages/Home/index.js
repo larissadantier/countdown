@@ -14,19 +14,29 @@ import Modal from '../../components/Modal';
 
 export default function Home() {
   const [days, setDays] = useState(0);
+  const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [listDays, setListDays] = useState([]);
   const [toggleModal, setToggleModal] = useState(false);
 
-  console.log(days);
-  console.log(description);
-  console.log(listDays);
-
   function handleAddCountDownDays() {
-    listDays.push({ id: listDays.length + 1, days, description });
+    listDays.push({
+      id: listDays.length + 1,
+      days,
+      title,
+      description,
+    });
     setListDays(listDays);
+
     setToggleModal(false);
     setDays('');
+    setTitle('');
+    setDescription('');
+  }
+
+  function handleRemoveCountDownDays(id) {
+    const filterListDays = listDays.filter((item) => item.id !== id);
+    setListDays(filterListDays);
   }
 
   function handleInputDays(text) {
@@ -35,6 +45,10 @@ export default function Home() {
 
   function handleInputDescription(text) {
     setDescription(text);
+  }
+
+  function handleInputTitle(text) {
+    setTitle(text);
   }
 
   return (
@@ -47,6 +61,12 @@ export default function Home() {
           style={styles.input}
           value={Number(days)}
           onChangeText={handleInputDays}
+        />
+        <Text style={styles.title_input}>Título</Text>
+        <TextInput
+          style={styles.input}
+          value={title}
+          onChangeText={handleInputTitle}
         />
         <Text style={styles.title_input}>Descrição</Text>
         <TextInput
@@ -80,6 +100,7 @@ export default function Home() {
           <Clock
             key={listDay.id}
             item={listDay}
+            handleRemoveCountDownDays={() => handleRemoveCountDownDays(listDay.id)}
           />
         ))}
       </ScrollView>
