@@ -6,6 +6,7 @@ import {
   View,
   Text,
   TextInput,
+  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import Clock from '../../components/Clock';
@@ -13,14 +14,16 @@ import Modal from '../../components/Modal';
 
 export default function Home() {
   const [days, setDays] = useState(0);
+  const [description, setDescription] = useState('');
   const [listDays, setListDays] = useState([]);
   const [toggleModal, setToggleModal] = useState(false);
 
   console.log(days);
+  console.log(description);
   console.log(listDays);
 
   function handleAddCountDownDays() {
-    listDays.push(days);
+    listDays.push({ id: listDays.length + 1, days, description });
     setListDays(listDays);
     setToggleModal(false);
     setDays('');
@@ -28,6 +31,10 @@ export default function Home() {
 
   function handleInputDays(text) {
     setDays(text);
+  }
+
+  function handleInputDescription(text) {
+    setDescription(text);
   }
 
   return (
@@ -40,6 +47,12 @@ export default function Home() {
           style={styles.input}
           value={Number(days)}
           onChangeText={handleInputDays}
+        />
+        <Text style={styles.title_input}>Descrição</Text>
+        <TextInput
+          style={styles.input}
+          value={description}
+          onChangeText={handleInputDescription}
         />
         <TouchableOpacity
           style={styles.button}
@@ -62,12 +75,14 @@ export default function Home() {
       >
         <Text style={styles.text}>Adicionar</Text>
       </TouchableOpacity>
-
-      {listDays.map((listDay) => (
-        <Clock
-          days={listDay}
-        />
-      ))}
+      <ScrollView>
+        {listDays.map((listDay) => (
+          <Clock
+            key={listDay.id}
+            item={listDay}
+          />
+        ))}
+      </ScrollView>
     </>
   );
 }
