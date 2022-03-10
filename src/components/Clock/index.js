@@ -17,12 +17,12 @@ export default function Clock({ item, handleRemoveCountDownDays }) {
         digitTxtStyle={{ color: '#FFF' }}
         size={40}
       />
-      <Text style={styles.description}>
+      <Text style={styles.information}>
         Titulo:
         {' '}
         {item.title}
       </Text>
-      <Text style={styles.description}>
+      <Text style={styles.information}>
         Descrição:
         {' '}
         {item.description}
@@ -41,22 +41,23 @@ export default function Clock({ item, handleRemoveCountDownDays }) {
 const styles = StyleSheet.create({
   containerNumbers: {
     marginTop: 16,
+    marginBottom: 8,
   },
-  description: {
-    fontSize: 18,
+  information: {
     marginTop: 8,
+    fontSize: 18,
   },
   button: {
     maxWidth: 100,
     alignItems: 'center',
-    padding: 8,
     marginTop: 16,
+    padding: 8,
     backgroundColor: '#e03045',
     borderRadius: 4,
   },
   text: {
-    color: '#fff',
     fontWeight: 'bold',
+    color: '#fff',
   },
 });
 

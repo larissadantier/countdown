@@ -27,8 +27,11 @@ export default function Home() {
       description,
     });
     setListDays(listDays);
-
     setToggleModal(false);
+    cleanInputs();
+  }
+
+  function cleanInputs() {
     setDays('');
     setTitle('');
     setDescription('');
@@ -83,7 +86,7 @@ export default function Home() {
       </Modal>
       )}
 
-      <View>
+      <View style={styles.header}>
         <Text style={styles.title}>
           CountDown
         </Text>
@@ -109,32 +112,8 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    fontWeight: 'bold',
-    fontSize: 44,
-    color: '#222222',
-  },
-  input: {
-    marginTop: 10,
-    padding: 4,
-    borderWidth: 3,
-    borderColor: '#f8f9fa',
-    borderRadius: 4,
-  },
-  title_input: {
-    marginTop: 10,
-  },
-  button: {
-    maxWidth: 100,
-    alignItems: 'center',
-    padding: 8,
-    marginTop: 16,
-    backgroundColor: '#03045e',
-    borderRadius: 4,
-  },
-  text: {
-    color: '#fff',
-    fontWeight: 'bold',
+  header: {
+    marginTop: 28,
   },
   containerNumbers: {
     justifyContent: 'center',
@@ -143,6 +122,25 @@ const styles = StyleSheet.create({
     marginTop: 16,
     padding: 8,
     backgroundColor: '#03045e',
+    borderRadius: 4,
+  },
+  title: {
+    fontSize: 44,
+    fontWeight: 'bold',
+    color: '#222222',
+  },
+  title_input: {
+    marginTop: 10,
+  },
+  text: {
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  input: {
+    marginTop: 10,
+    padding: 4,
+    borderColor: '#f8f9fa',
+    borderWidth: 3,
     borderRadius: 4,
   },
   item: {
@@ -157,5 +155,13 @@ const styles = StyleSheet.create({
   small: {
     fontSize: 16,
     color: '#fff',
+  },
+  button: {
+    maxWidth: 100,
+    alignItems: 'center',
+    marginTop: 16,
+    padding: 8,
+    backgroundColor: '#03045e',
+    borderRadius: 4,
   },
 });

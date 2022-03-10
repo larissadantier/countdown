@@ -24,16 +24,16 @@ export default function Modal({ children, closeModal }) {
 
 const styles = StyleSheet.create({
   overlay: {
+    width: '100%',
+    height: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
     position: 'absolute',
     top: 0,
     right: 0,
     zIndex: 10,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
   modal: {
     width: '100%',
@@ -45,14 +45,14 @@ const styles = StyleSheet.create({
   button: {
     maxWidth: 60,
     alignItems: 'center',
-    padding: 8,
     marginTop: 16,
+    padding: 8,
     backgroundColor: '#e63946',
     borderRadius: 4,
   },
   text: {
-    color: '#fff',
     fontWeight: 'bold',
+    color: '#fff',
   },
 });
 
