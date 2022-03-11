@@ -30,7 +30,7 @@ export default function Clock({ item, handleRemoveCountDownDays }) {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => handleRemoveCountDownDays(item.id)}
+        onPress={() => handleRemoveCountDownDays()}
       >
         <Text style={styles.text}>Remover</Text>
       </TouchableOpacity>
